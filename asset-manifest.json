@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/jakeodonnell.github.io/static/css/main.cb66fe1a.css",
-    "main.js": "/jakeodonnell.github.io/static/js/main.401f4528.js",
-    "index.html": "/jakeodonnell.github.io/index.html",
-    "main.cb66fe1a.css.map": "/jakeodonnell.github.io/static/css/main.cb66fe1a.css.map",
-    "main.401f4528.js.map": "/jakeodonnell.github.io/static/js/main.401f4528.js.map"
+    "main.css": "/static/css/main.cb66fe1a.css",
+    "main.js": "/static/js/main.401f4528.js",
+    "index.html": "/index.html",
+    "main.cb66fe1a.css.map": "/static/css/main.cb66fe1a.css.map",
+    "main.401f4528.js.map": "/static/js/main.401f4528.js.map"
   },
   "entrypoints": [
     "static/css/main.cb66fe1a.css",
