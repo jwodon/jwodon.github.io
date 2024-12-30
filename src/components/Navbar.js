@@ -1,21 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Navbar = () => (
-  <nav style={{ backgroundColor: '#007bff', padding: '10px', color: 'white' }}>
-    <ul style={{ display: 'flex', justifyContent: 'center', listStyle: 'none', margin: 0, padding: 0 }}>
-      <li style={{ margin: '0 15px' }}>
-        <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
-      </li>
-      <li style={{ margin: '0 15px' }}>
-        <Link to="/about" style={{ color: 'white', textDecoration: 'none' }}>About</Link>
-      </li>
-      <li style={{ margin: '0 15px' }}>
-        <Link to="/portfolio" style={{ color: 'white', textDecoration: 'none' }}>Portfolio</Link>
-      </li>
-      <li style={{ margin: '0 15px' }}>
-        <Link to="/contact" style={{ color: 'white', textDecoration: 'none' }}>Contact</Link>
-      </li>
+  <nav style={{
+    backgroundColor: '#111111',
+    padding: '15px',
+    position: 'sticky',
+    top: 0,
+    zIndex: 1000,
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  }}>
+    <ul style={{
+      display: 'flex',
+      justifyContent: 'center',
+      listStyle: 'none',
+      margin: 0,
+      padding: 0,
+    }}>
+      {['Home', 'About', 'Portfolio', 'Contact'].map((item, index) => (
+        <li key={index} style={{ margin: '0 20px' }}>
+          <a href={`#${item.toLowerCase()}`} style={{
+            color: '#f1faee',
+            textDecoration: 'none',
+            fontSize: '18px',
+            fontWeight: 'bold',
+            transition: 'color 0.3s ease',
+          }}>
+            {item}
+          </a>
+        </li>
+      ))}
     </ul>
   </nav>
 );
