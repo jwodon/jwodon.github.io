@@ -1,36 +1,50 @@
-import React from 'react';
+// src/components/Navbar.js
+import React, { useState, useEffect } from 'react';
 
-const Navbar = () => (
-  <nav style={{
-    backgroundColor: '#111111',
-    padding: '15px',
-    position: 'sticky',
-    top: 0,
-    zIndex: 1000,
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-  }}>
-    <ul style={{
-      display: 'flex',
-      justifyContent: 'center',
-      listStyle: 'none',
-      margin: 0,
-      padding: 0,
-    }}>
-      {['Home', 'About', 'Portfolio', 'Contact'].map((item, index) => (
-        <li key={index} style={{ margin: '0 20px' }}>
-          <a href={`#${item.toLowerCase()}`} style={{
-            color: '#f1faee',
-            textDecoration: 'none',
-            fontSize: '18px',
-            fontWeight: 'bold',
-            transition: 'color 0.3s ease',
-          }}>
-            {item}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
-);
+const Navbar = () => {
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'portfolio', 'contact'];
+      let currentSection = 'home';
+
+      sections.forEach((sectionId) => {
+        const sectionElement = document.getElementById(sectionId);
+        if (sectionElement) {
+          const rect = sectionElement.getBoundingClientRect();
+          // If top <= 80 (near the nav) and bottom >= 80 => in view
+          if (rect.top <= 80 && rect.bottom >= 80) {
+            currentSection = sectionId;
+          }
+        }
+      });
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <nav>
+      <ul>
+        {['Home', 'About', 'Portfolio', 'Contact'].map((item, index) => {
+          const lowerItem = item.toLowerCase();
+          return (
+            <li key={index}>
+              <a
+                href={`#${lowerItem}`}
+                className={activeSection === lowerItem ? 'active' : ''}
+              >
+                {item}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  );
+};
 
 export default Navbar;
